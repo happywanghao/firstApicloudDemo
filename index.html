@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>底部导航</title>
+    <link rel="stylesheet" type="text/css" href="./css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+    <style>
+      .button{
+        font-size: 20px;
+        text-align: center;
+        line-height: 30px;
+        height: 30px;
+        margin-top: 20px;
+      }
+    </style>
+</head>
+<body>
+  <button class='button' onclick="openFNScanner()">
+    打开二维码扫描
+  </button>
+  <button id='torch' class='button' onclick='openTorch()'>
+    打开手电筒
+  </button>
+</body>
+</html>
+<script type="text/javascript" src="script/api.js"></script>
+<script type="text/javascript">
+  apireadyapiready = function() {
+    console.log('dfghjkl')
+  }
+  function openTorch(){
+    var DVTorch = api.require('DVTorch');
+    DVTorch.toggle({});
+    console.log($api.byId('torch'))
+    // $api.byId('torch').innerTEXT='关闭手电筒'
+
+  }
+  function openFNScanner() {
+    console.dir('hjindjij')
+    var FNScanner = api.require('FNScanner');
+    FNScanner.openScanner({
+        autorotation: true
+    }, function(ret, err) {
+        if (ret) {
+            console.log(JSON.stringify(ret))
+        } else {
+            alert(JSON.stringify(err));
+        }
+    });
+  }
+</script>
